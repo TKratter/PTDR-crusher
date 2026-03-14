@@ -1,0 +1,96 @@
+experiment_name: ptdr-parseq-ptdr-synth-pretrain
+repo_root: .
+dataset_root: dataset/recognition
+include_domains:
+  - indoor_text
+  - outdoor_text
+
+manifests_dir: experiments/ptdr/manifests/parseq_ptdr_synth_pretrain
+val_ratio: 0.1
+split_seed: 42
+fail_on_bad_annotations: false
+include_ptdr_train_in_train_split: false
+lmdb_map_size_gb: 32.0
+ptdr_synth_root: dataset/synth/ptdr_synth
+extra_train_dataset_roots: []
+
+external_datasets:
+  icdar2019_mlt: null
+  evarest_detection: null
+  evarest_recognition: null
+  totaltext: null
+  ctw1500: null
+  textocr: null
+  ir_lpr_detection: null
+  ir_lpr_recognition: null
+
+train_mix:
+  ptdr: 1.0
+  icdar2019_mlt: 0.0
+  evarest: 0.0
+  totaltext: 0.0
+  ctw1500: 0.0
+  textocr: 0.0
+  ir_lpr: 0.0
+  min_ptdr_fraction: 0.3
+
+model:
+  name: parseq
+  pretrained: true
+  init_from_checkpoint: null
+  use_eval_charset_for_train_charset: true
+  img_size: [32, 128]
+  max_label_length: null
+
+training:
+  work_dir: work_dirs/parseq_ptdr_synth_pretrain
+  seed: 42
+  batch_size: 192
+  num_workers: 8
+  max_epochs: 10
+  accelerator: auto
+  devices: 1
+  precision: 16-mixed
+  log_every_n_steps: 25
+  accumulate_grad_batches: 1
+  gradient_clip_val: 1.0
+  lr: 0.001
+  warmup_pct: 0.075
+  weight_decay: 0.0
+  cudnn_benchmark: true
+  matmul_precision: high
+  resume_from_checkpoint: null
+
+data:
+  augment: true
+  remove_whitespace: false
+  normalize_unicode: false
+  min_image_dim: 0
+  rotation: 0
+  collate_fn: null
+
+hard_aug:
+  train:
+    enabled: false
+    probability: 0.0
+    right_angle_rotation_probability: 0.0
+    rotation_angles: [90, 180, 270]
+  eval:
+    enabled: true
+    seed: 42
+    rotation_angles: [90, 180, 270]
+
+wandb:
+  enabled: true
+  mode: online
+  project: ptdr-ocr
+  entity: null
+  group: parseq-two-stage
+  job_type: pretrain
+  run_name: null
+  tags:
+    - ptdr
+    - parseq
+    - recognition
+    - ptdr-synth
+    - pretrain

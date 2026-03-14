@@ -1,0 +1,87 @@
+experiment_name: ptdr-dbnetpp-ptdr-hard-finetune-stage
+repo_root: .
+dataset_root: dataset/detection
+include_domains:
+  - indoor_text
+  - outdoor_text
+
+manifests_dir: experiments/ptdr/manifests/dbnetpp_ptdr_curriculum
+val_ratio: 0.1
+split_seed: 42
+fail_on_bad_annotations: false
+
+external_datasets:
+  icdar2019_mlt: null
+  evarest_detection: null
+  evarest_recognition: null
+  totaltext: null
+  ctw1500: null
+  textocr: null
+  ir_lpr_detection: null
+  ir_lpr_recognition: null
+
+train_mix:
+  ptdr: 1.0
+  icdar2019_mlt: 0.0
+  evarest: 0.0
+  totaltext: 0.0
+  ctw1500: 0.0
+  textocr: 0.0
+  ir_lpr: 0.0
+  min_ptdr_fraction: 0.3
+
+mlt:
+  scripts:
+    - Arabic
+    - Latin
+
+mmocr:
+  base_config: dbnetpp_resnet50-dcnv2_fpnc_1200e_icdar2015.py
+  load_from: null
+
+training:
+  work_dir: work_dirs/dbnetpp_ptdr_hard_finetune_stage
+  seed: 42
+  batch_size: 8
+  eval_batch_size: 1
+  num_workers: 8
+  pin_memory: true
+  prefetch_factor: 2
+  cudnn_benchmark: true
+  max_epochs: 40
+  val_interval: 5
+  amp: true
+  logger_interval: 50
+  checkpoint_interval: 1
+  max_keep_ckpts: 3
+  resume: false
+  enable_auto_scale_lr: false
+  optimizer_lr: 0.0025
+  train_max_image_side: 4096
+  train_max_pixels: 16000000
+
+hard_aug:
+  train:
+    enabled: true
+    probability: 0.05
+    schedule_epochs: [0, 15, 30]
+    schedule_probabilities: [0.05, 0.1, 0.18]
+  eval:
+    enabled: true
+    seed: 42
+    rotation_angles: [90, 180, 270]
+
+wandb:
+  enabled: true
+  mode: online
+  project: ptdr-ocr
+  entity: null
+  group: dbnetpp-curriculum
+  job_type: train
+  run_name: null
+  tags:
+    - ptdr
+    - dbnetpp
+    - detection
+    - curriculum
+    - hard-finetune

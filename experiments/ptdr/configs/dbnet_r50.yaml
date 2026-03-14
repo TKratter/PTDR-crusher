@@ -1,0 +1,46 @@
+experiment_name: ptdr-dbnet-r50-scene
+repo_root: .
+dataset_root: dataset/detection
+include_domains:
+  - indoor_text
+  - outdoor_text
+
+manifests_dir: experiments/ptdr/manifests/dbnet_r50_scene
+val_ratio: 0.1
+split_seed: 42
+fail_on_bad_annotations: false
+
+mmocr:
+  base_config: dbnet_resnet50_1200e_icdar2015.py
+  load_from: null
+
+training:
+  work_dir: work_dirs/dbnet_r50_ptdr_scene
+  seed: 42
+  batch_size: 8
+  eval_batch_size: 1
+  num_workers: 8
+  pin_memory: true
+  prefetch_factor: 2
+  cudnn_benchmark: true
+  max_epochs: 100
+  val_interval: 5
+  amp: true
+  logger_interval: 50
+  checkpoint_interval: 1
+  max_keep_ckpts: 3
+  resume: true
+
+wandb:
+  enabled: true
+  mode: online
+  project: ptdr-ocr
+  entity: null
+  group: dbnet
+  job_type: train
+  run_name: null
+  tags:
+    - ptdr
+    - dbnet
+    - detection
+    - resnet50

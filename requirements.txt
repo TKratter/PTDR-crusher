@@ -1,0 +1,29 @@
+# This file targets Python 3.10 on Linux with an NVIDIA GPU, using a coherent
+# OpenMMLab stack with prebuilt wheels for PyTorch 2.0 and CUDA 11.8.
+#
+# If your host requires a different CUDA runtime or Python ABI, update both the
+# PyTorch index URL and the mmcv find-links URL below to the matching wheel set.
+
+--extra-index-url https://download.pytorch.org/whl/cu118
+--find-links https://download.openmmlab.com/mmcv/dist/cu118/torch2.0/index.html
+
+torch==2.0.0+cu118
+torchvision==0.15.1+cu118
+pytorch-lightning==2.1.4
+numpy<2
+setuptools<81
+wheel
+packaging>=23,<25
+
+mmengine>=0.7.1,<1.1.0
+mmcv==2.0.1
+mmdet>=3.0.0rc5,<3.2.0
+mmocr>=1.0.1,<1.1
+
+strhub @ git+https://github.com/baudm/parseq.git
+
+PyYAML>=6.0,<7.0
+Pillow>=10.0,<12.0
+lmdb>=1.4,<1.6
+pyrallis>=0.3.1,<0.4
+wandb>=0.22.3,<0.23

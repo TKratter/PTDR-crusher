@@ -1,0 +1,59 @@
+experiment_name: ptdr-parseq-tiny-scene
+repo_root: .
+dataset_root: dataset/recognition
+include_domains:
+  - indoor_text
+  - outdoor_text
+
+manifests_dir: experiments/ptdr/manifests/parseq_tiny_scene
+val_ratio: 0.1
+split_seed: 42
+fail_on_bad_annotations: false
+lmdb_map_size_gb: 8.0
+
+model:
+  name: parseq-tiny
+  pretrained: true
+  img_size: [32, 128]
+  max_label_length: null
+
+training:
+  work_dir: work_dirs/parseq_tiny_ptdr_scene
+  seed: 42
+  batch_size: 256
+  num_workers: 8
+  max_epochs: 20
+  accelerator: auto
+  devices: 1
+  precision: 16-mixed
+  log_every_n_steps: 25
+  accumulate_grad_batches: 1
+  gradient_clip_val: 1.0
+  lr: 0.001
+  warmup_pct: 0.075
+  weight_decay: 0.0
+  cudnn_benchmark: true
+  matmul_precision: high
+  resume_from_checkpoint: null
+
+data:
+  augment: true
+  remove_whitespace: false
+  normalize_unicode: false
+  min_image_dim: 0
+  rotation: 0
+  collate_fn: null
+
+wandb:
+  enabled: true
+  mode: online
+  project: ptdr-ocr
+  entity: null
+  group: parseq
+  job_type: train
+  run_name: null
+  tags:
+    - ptdr
+    - parseq
+    - recognition
+    - tiny

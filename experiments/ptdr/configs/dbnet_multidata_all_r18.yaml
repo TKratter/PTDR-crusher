@@ -1,0 +1,72 @@
+experiment_name: ptdr-dbnet-multidata-all-r18
+repo_root: .
+dataset_root: dataset/detection
+include_domains:
+  - indoor_text
+  - outdoor_text
+
+manifests_dir: experiments/ptdr/manifests/dbnet_multidata_all_r18
+val_ratio: 0.1
+split_seed: 42
+fail_on_bad_annotations: false
+
+external_datasets:
+  icdar2019_mlt: dataset/external/icdar2019_mlt
+  evarest_detection: dataset/external/evarest_detection
+  evarest_recognition: dataset/external/evarest_recognition
+  totaltext: dataset/external/totaltext
+  ctw1500: dataset/external/ctw1500
+  textocr: dataset/external/textocr
+  ir_lpr_detection: dataset/external/ir_lpr_detection
+  ir_lpr_recognition: dataset/external/ir_lpr_recognition
+
+train_mix:
+  ptdr: 0.30
+  icdar2019_mlt: 0.30
+  evarest: 0.10
+  totaltext: 0.10
+  ctw1500: 0.05
+  textocr: 0.10
+  ir_lpr: 0.05
+  min_ptdr_fraction: 0.3
+
+mlt:
+  scripts:
+    - Arabic
+    - Latin
+
+mmocr:
+  base_config: dbnet_resnet18_fpnc_1200e_icdar2015.py
+  load_from: null
+
+training:
+  work_dir: work_dirs/dbnet_multidata_all_r18
+  seed: 42
+  batch_size: 8
+  eval_batch_size: 1
+  num_workers: 8
+  pin_memory: true
+  prefetch_factor: 2
+  cudnn_benchmark: true
+  max_epochs: 100
+  val_interval: 5
+  amp: true
+  logger_interval: 50
+  checkpoint_interval: 1
+  max_keep_ckpts: 3
+  resume: false
+
+wandb:
+  enabled: true
+  mode: online
+  project: ptdr-ocr
+  entity: null
+  group: dbnet-multidata
+  job_type: train
+  run_name: null
+  tags:
+    - ptdr
+    - dbnet
+    - detection
+    - multidata
+    - r18

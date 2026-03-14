@@ -1,0 +1,94 @@
+experiment_name: ptdr-parseq-multidata-all-norm-v2
+repo_root: .
+dataset_root: dataset/recognition
+include_domains:
+  - indoor_text
+  - outdoor_text
+
+manifests_dir: experiments/ptdr/manifests/parseq_multidata_all_norm_v2
+val_ratio: 0.1
+split_seed: 42
+fail_on_bad_annotations: false
+lmdb_map_size_gb: 128.0
+extra_train_dataset_roots: []
+
+external_datasets:
+  icdar2019_mlt: dataset/external/icdar2019_mlt
+  evarest_detection: dataset/external/evarest_detection
+  evarest_recognition: dataset/external/evarest_recognition
+  totaltext: dataset/external/totaltext
+  ctw1500: dataset/external/ctw1500
+  textocr: dataset/external/textocr
+  ir_lpr_detection: dataset/external/ir_lpr_detection
+  ir_lpr_recognition: dataset/external/ir_lpr_recognition
+
+train_mix:
+  ptdr: 0.30
+  icdar2019_mlt: 0.30
+  evarest: 0.10
+  totaltext: 0.10
+  ctw1500: 0.05
+  textocr: 0.10
+  ir_lpr: 0.05
+  min_ptdr_fraction: 0.3
+
+mlt:
+  scripts:
+    - Arabic
+    - Latin
+
+model:
+  name: parseq
+  pretrained: true
+  img_size: [32, 128]
+  max_label_length: null
+
+training:
+  work_dir: work_dirs/parseq_multidata_all_norm_v2
+  seed: 42
+  batch_size: 192
+  num_workers: 8
+  max_epochs: 20
+  accelerator: auto
+  devices: 1
+  precision: 16-mixed
+  log_every_n_steps: 25
+  accumulate_grad_batches: 1
+  gradient_clip_val: 1.0
+  lr: 0.001
+  warmup_pct: 0.075
+  weight_decay: 0.0
+  cudnn_benchmark: true
+  matmul_precision: high
+  resume_from_checkpoint: null
+
+data:
+  augment: true
+  remove_whitespace: false
+  normalize_unicode: false
+  min_image_dim: 0
+  rotation: 0
+  collate_fn: null
+
+charset_policy:
+  base_charset_path: experiments/ptdr/charsets/parseq_allowed_base_charset.txt
+  allow_arabic_extras_only: true
+  normalize_arabic_indic_digits: true
+  arabic_indic_digit_target: persian
+  drop_unsupported_labels: true
+
+wandb:
+  enabled: true
+  mode: online
+  project: ptdr-ocr
+  entity: null
+  group: parseq-multidata
+  job_type: train
+  run_name: null
+  tags:
+    - ptdr
+    - parseq
+    - recognition
+    - multidata
+    - normalized-charset
+    - mix-v2
