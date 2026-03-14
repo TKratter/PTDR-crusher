@@ -1,0 +1,56 @@
+experiment_name: ptdr-crop-rotation-classifier
+repo_root: .
+
+model:
+  backbone: mobilenet_v2
+  pretrained: true
+  image_size: [128, 128]
+  dropout: 0.1
+
+training:
+  work_dir: work_dirs/crop_rotation_classifier
+  seed: 42
+  batch_size: 256
+  num_workers: 8
+  max_epochs: 12
+  accelerator: auto
+  devices: 1
+  precision: 16-mixed
+  lr: 0.0005
+  weight_decay: 0.0001
+  gradient_clip_val: 1.0
+  log_every_n_steps: 25
+  resume_from_checkpoint: null
+
+data:
+  train_lmdb_root: experiments/ptdr/manifests/parseq_multidata_all_norm_v2/train/real/ptdr
+  shared_eval_root: experiments/ptdr/manifests/shared_recognition_eval_variants
+  shared_eval_label_root: experiments/ptdr/manifests/shared_crop_rotation_eval
+  dataset_root: dataset/recognition
+  include_domains:
+    - indoor_text
+    - outdoor_text
+  val_ratio: 0.1
+  split_seed: 42
+  hard_seed: 42
+  hard_probability: 0.65
+  charset_policy:
+    base_charset_path: experiments/ptdr/charsets/parseq_allowed_base_charset.txt
+    allow_arabic_extras_only: true
+    normalize_arabic_indic_digits: true
+    arabic_indic_digit_target: persian
+    drop_unsupported_labels: true
+
+wandb:
+  enabled: true
+  mode: online
+  project: ptdr-ocr
+  entity: null
+  group: crop-rotation
+  job_type: train
+  run_name: null
+  tags:
+    - ptdr
+    - rotation
+    - recognition-crop
+    - hard-train

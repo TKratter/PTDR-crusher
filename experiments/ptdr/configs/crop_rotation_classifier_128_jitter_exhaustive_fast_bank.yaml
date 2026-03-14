@@ -1,0 +1,61 @@
+experiment_name: ptdr-crop-rotation-classifier-128-jitter-exhaustive-fast-bank
+repo_root: .
+model:
+  backbone: mobilenet_v2
+  pretrained: true
+  image_size: [128, 128]
+  dropout: 0.1
+training:
+  work_dir: work_dirs/crx4
+  seed: 42
+  batch_size: 256
+  num_workers: 0
+  max_epochs: 12
+  accelerator: gpu
+  devices: 2
+  precision: 16-mixed
+  lr: 0.0005
+  weight_decay: 0.0001
+  gradient_clip_val: 1.0
+  log_every_n_steps: 25
+  resume_from_checkpoint: null
+data:
+  train_lmdb_root: experiments/ptdr/manifests/parseq_multidata_all_norm_v2/train/real/ptdr
+  detection_dataset_root: dataset/detection
+  detector_jitter_bank_root: experiments/ptdr/manifests/crop_rotation_jitter_bank_exhaustive_v1
+  detector_jitter_bank_size: null
+  detector_jitter_bank_seed: 42
+  shared_eval_root: experiments/ptdr/manifests/shared_recognition_eval_variants
+  shared_eval_label_root: experiments/ptdr/manifests/shared_crop_rotation_eval
+  dataset_root: dataset/recognition
+  include_domains:
+    - indoor_text
+    - outdoor_text
+  val_ratio: 0.1
+  split_seed: 42
+  hard_seed: 42
+  hard_probability: 0.65
+  small_rotation_probability: 0.35
+  small_rotation_max_degrees: 10.0
+  detector_jitter_probability: 0.35
+  detector_jitter_attempts: 8
+  detection_image_cache_size: 256
+  exhaustive_right_angle_classes: true
+wandb:
+  enabled: true
+  project: ptdr-ocr
+  entity: null
+  group: crop-rotation
+  job_type: train
+  mode: online
+  run_name: crop-rotation-128-jitter-exhaustive-fast-bank
+  tags:
+    - ptdr
+    - rotation
+    - recognition-crop
+    - mobilenetv2
+    - 128x128
+    - detector-jitter
+    - exhaustive-angles
+    - fast
+    - jitter-bank

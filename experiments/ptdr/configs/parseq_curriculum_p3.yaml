@@ -1,0 +1,120 @@
+experiment_name: ptdr-parseq-curriculum-p3
+repo_root: .
+dataset_root: dataset/recognition
+include_domains:
+  - indoor_text
+  - outdoor_text
+
+manifests_dir: experiments/ptdr/manifests/pqcur_p3
+val_ratio: 0.1
+split_seed: 42
+fail_on_bad_annotations: false
+lmdb_map_size_gb: 128.0
+extra_train_dataset_roots: []
+
+external_datasets:
+  icdar2019_mlt: dataset/external/icdar2019_mlt
+  evarest_detection: dataset/external/evarest_detection
+  evarest_recognition: dataset/external/evarest_recognition
+  totaltext: dataset/external/totaltext
+  ctw1500: dataset/external/ctw1500
+  textocr: dataset/external/textocr
+  ir_lpr_detection: dataset/external/ir_lpr_detection
+  ir_lpr_recognition: dataset/external/ir_lpr_recognition
+
+train_mix:
+  ptdr: 0.75
+  icdar2019_mlt: 0.15
+  evarest: 0.10
+  totaltext: 0.0
+  ctw1500: 0.0
+  textocr: 0.0
+  ir_lpr: 0.0
+  min_ptdr_fraction: 0.75
+
+mlt:
+  scripts:
+    - Arabic
+    - Latin
+
+model:
+  name: parseq
+  pretrained: true
+  init_from_checkpoint: null
+  img_size: [32, 128]
+  max_label_length: null
+  use_eval_charset_for_train_charset: false
+
+training:
+  work_dir: work_dirs/pqcur_p3
+  seed: 42
+  batch_size: 64
+  num_workers: 6
+  eval_num_workers: 0
+  max_epochs: 6
+  accelerator: gpu
+  devices: 4
+  precision: 16-mixed
+  log_every_n_steps: 25
+  accumulate_grad_batches: 1
+  gradient_clip_val: 1.0
+  lr: 0.0002
+  warmup_pct: 0.02
+  weight_decay: 0.0
+  cudnn_benchmark: true
+  matmul_precision: high
+  resume_from_checkpoint: null
+  extra_val_interval: 1
+  enable_val_sample_logging: false
+
+data:
+  augment: true
+  remove_whitespace: false
+  normalize_unicode: false
+  min_image_dim: 0
+  rotation: 0
+  collate_fn: null
+
+hard_aug:
+  train:
+    enabled: true
+    probability: 0.18
+    right_angle_rotation_probability: 0.05
+    rotation_angles: [90, 180, 270]
+    small_rotation_probability: 0.25
+    small_rotation_max_degrees: 6.0
+    detector_jitter_probability: 0.35
+    detector_jitter_translate_ratio: 0.08
+    detector_jitter_scale_ratio: 0.12
+    detector_jitter_perspective_ratio: 0.05
+  eval:
+    enabled: true
+    seed: 42
+    rotation_angles: [90, 180, 270]
+
+charset_policy:
+  base_charset_path: experiments/ptdr/charsets/parseq_allowed_base_charset.txt
+  allow_arabic_extras_only: true
+  normalize_arabic_indic_digits: true
+  arabic_indic_digit_target: persian
+  normalize_equivalent_arabic_persian_letters: true
+  arabic_persian_letter_target: persian
+  drop_unsupported_labels: true
+
+wandb:
+  enabled: true
+  mode: online
+  project: ptdr-ocr
+  entity: null
+  group: parseq-curriculum
+  job_type: train
+  run_name: null
+  tags:
+    - ptdr
+    - parseq
+    - recognition
+    - curriculum
+    - phase3
+    - normalized-charset
+    - detector-jitter
+    - mild-robustness

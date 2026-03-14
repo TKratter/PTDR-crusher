@@ -1,0 +1,52 @@
+experiment_name: ptdr-affine-stn
+repo_root: .
+
+model:
+  input_size: [512, 512]
+  hidden_dim: 128
+
+training:
+  work_dir: work_dirs/affine_stn
+  seed: 42
+  batch_size: 12
+  num_workers: 8
+  max_epochs: 20
+  accelerator: auto
+  devices: 1
+  precision: 16-mixed
+  lr: 0.0003
+  weight_decay: 0.0001
+  gradient_clip_val: 1.0
+  log_every_n_steps: 25
+  recon_loss_weight: 1.0
+  theta_loss_weight: 0.25
+  resume_from_checkpoint: null
+
+data:
+  train_manifest_path: experiments/ptdr/manifests/dbnet_multidata_all_r18_hard_faststable/textdet_train.json
+  val_manifest_path: experiments/ptdr/manifests/dbnet_multidata_all_r18_hard_faststable/textdet_val.json
+  test_manifest_path: experiments/ptdr/manifests/dbnet_multidata_all_r18_hard_faststable/textdet_test.json
+  shared_eval_root: experiments/ptdr/manifests/shared_textdet_eval_variants
+  right_angle_probability: 0.45
+  max_small_rotation_deg: 18.0
+  min_scale: 0.92
+  max_scale: 1.08
+  max_translation_ratio: 0.08
+  max_shear_deg: 10.0
+  photometric_probability: 0.8
+  hard_seed: 42
+
+wandb:
+  enabled: true
+  mode: online
+  project: ptdr-ocr
+  entity: null
+  group: affine-stn
+  job_type: train
+  run_name: null
+  tags:
+    - ptdr
+    - stn
+    - rotation
+    - detection-preproc
+    - hard-train
