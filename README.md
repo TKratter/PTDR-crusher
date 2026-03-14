@@ -1,5 +1,9 @@
 # PTDR OCR Research Workspace
 
+<p align="center">
+  <img src="docs/CV_vs_Codex.jpeg" alt="CV versus Codex meme" width="720" />
+</p>
+
 This repository is a research workspace built around the PTDR benchmark for Persian scene-text OCR. It combines:
 
 - MMOCR-based text detection training (`DBNet`, `DBNet++`)
