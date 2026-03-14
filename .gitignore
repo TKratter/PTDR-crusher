@@ -1,0 +1,55 @@
+# Python and notebooks
+__pycache__/
+**/__pycache__/
+*.py[cod]
+*.so
+.ipynb_checkpoints/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual environments and local shells
+.venv/
+venv/
+.env
+.python-version
+
+# OS / editor noise
+.DS_Store
+*.swp
+*.swo
+
+# Downloaded datasets and archives
+dataset/detection/
+dataset/recognition/
+dataset/synth/
+dataset/external/
+dataset/fatdr/.git/
+dataset/fatdr/FATR-Real-dataset/
+dataset/fatdr/FATR-synthetic-dataset/*
+!dataset/fatdr/FATR-synthetic-dataset/link.md
+dataset/fatdr/lmdb-dataset/
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.gz
+*.part
+
+# Generated manifests and binary caches
+experiments/ptdr/manifests/*
+!experiments/ptdr/manifests/.gitkeep
+*.mdb
+
+# Local experiment outputs
+work_dirs/
+.dist_test/
+*.log
+*.ckpt
+*.pth
+*.pt
+
+# Weights & Biases and temporary runtime files
+wandb/
+**/wandb/
+tmp/
