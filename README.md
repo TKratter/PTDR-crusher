@@ -1,5 +1,7 @@
 # PTDR OCR Research Workspace
 
+> Personal disclaimer: this repository is my effort to solve end-to-end OCR on the PTDR dataset introduced in [zobeirraisi/PTDR](https://github.com/zobeirraisi/PTDR). An important disclaimer is that I did not write a single line of code in this repo myself; it was produced entirely through vibe coding, following my instructions. I managed to get some fair results, with "more than the trivial thing to do" kinds of solutions, but there is still a lot left to do.
+
 <p align="center">
   <img src="docs/CV_vs_Codex.jpeg" alt="CV versus Codex meme" width="720" />
 </p>
