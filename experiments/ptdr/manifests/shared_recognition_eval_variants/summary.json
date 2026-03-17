@@ -1,0 +1,470 @@
+{
+  "seed": 42,
+  "split_seed": 42,
+  "val_ratio": 0.1,
+  "include_domains": [
+    "indoor_text",
+    "outdoor_text"
+  ],
+  "rotation_angles": [
+    90,
+    180,
+    270
+  ],
+  "variants": {
+    "val": {
+      "count": 1289,
+      "max_label_length": 16,
+      "domains": {
+        "indoor_text/commercial": 206,
+        "indoor_text/retail": 65,
+        "outdoor_text/retail_exteriors": 777,
+        "outdoor_text/roadway_signage": 180,
+        "outdoor_text/urban_graffiti": 35,
+        "outdoor_text/urban_signage": 26
+      }
+    },
+    "test": {
+      "count": 3504,
+      "max_label_length": 21,
+      "domains": {
+        "indoor_text/commercial": 743,
+        "indoor_text/retail": 158,
+        "outdoor_text/retail_exteriors": 1929,
+        "outdoor_text/roadway_signage": 501,
+        "outdoor_text/urban_graffiti": 92,
+        "outdoor_text/urban_signage": 81
+      }
+    },
+    "val_rot90": {
+      "count": 1289,
+      "max_label_length": 16,
+      "domains": {
+        "indoor_text/commercial": 206,
+        "indoor_text/retail": 65,
+        "outdoor_text/retail_exteriors": 777,
+        "outdoor_text/roadway_signage": 180,
+        "outdoor_text/urban_graffiti": 35,
+        "outdoor_text/urban_signage": 26
+      }
+    },
+    "val_rot180": {
+      "count": 1289,
+      "max_label_length": 16,
+      "domains": {
+        "indoor_text/commercial": 206,
+        "indoor_text/retail": 65,
+        "outdoor_text/retail_exteriors": 777,
+        "outdoor_text/roadway_signage": 180,
+        "outdoor_text/urban_graffiti": 35,
+        "outdoor_text/urban_signage": 26
+      }
+    },
+    "val_rot270": {
+      "count": 1289,
+      "max_label_length": 16,
+      "domains": {
+        "indoor_text/commercial": 206,
+        "indoor_text/retail": 65,
+        "outdoor_text/retail_exteriors": 777,
+        "outdoor_text/roadway_signage": 180,
+        "outdoor_text/urban_graffiti": 35,
+        "outdoor_text/urban_signage": 26
+      }
+    },
+    "val_hard": {
+      "count": 1289,
+      "max_label_length": 16,
+      "domains": {
+        "indoor_text/commercial": 206,
+        "indoor_text/retail": 65,
+        "outdoor_text/retail_exteriors": 777,
+        "outdoor_text/roadway_signage": 180,
+        "outdoor_text/urban_graffiti": 35,
+        "outdoor_text/urban_signage": 26
+      },
+      "preset_counts": {
+        "harsh_glare": 276,
+        "low_light_blur": 251,
+        "mild_tilt": 272,
+        "oblique_capture": 250,
+        "upside_down": 240
+      }
+    },
+    "test_hard": {
+      "count": 3504,
+      "max_label_length": 21,
+      "domains": {
+        "indoor_text/commercial": 743,
+        "indoor_text/retail": 158,
+        "outdoor_text/retail_exteriors": 1929,
+        "outdoor_text/roadway_signage": 501,
+        "outdoor_text/urban_graffiti": 92,
+        "outdoor_text/urban_signage": 81
+      },
+      "preset_counts": {
+        "harsh_glare": 718,
+        "low_light_blur": 702,
+        "mild_tilt": 684,
+        "oblique_capture": 682,
+        "upside_down": 718
+      }
+    }
+  },
+  "charset_policy": {
+    "base_charset_path": "/home/dluser/PTDR/experiments/ptdr/charsets/parseq_allowed_base_charset.txt",
+    "allow_arabic_extras_only": true,
+    "normalize_arabic_indic_digits": true,
+    "arabic_indic_digit_target": "persian",
+    "normalize_equivalent_arabic_persian_letters": true,
+    "arabic_persian_letter_target": "persian",
+    "drop_unsupported_labels": true
+  },
+  "errors": [
+    {
+      "file": "/home/dluser/PTDR/dataset/recognition/train/indoor_text/commercial/gt.csv",
+      "line": 131,
+      "reason": "missing label"
+    },
+    {
+      "file": "/home/dluser/PTDR/dataset/recognition/train/indoor_text/commercial/gt.csv",
+      "line": 132,
+      "reason": "missing label"
+    },
+    {
+      "file": "/home/dluser/PTDR/dataset/recognition/train/indoor_text/commercial/gt.csv",
+      "line": 143,
+      "reason": "missing label"
+    },
+    {
+      "file": "/home/dluser/PTDR/dataset/recognition/train/indoor_text/commercial/gt.csv",
+      "line": 149,
+      "reason": "missing label"
+    },
+    {
+      "file": "/home/dluser/PTDR/dataset/recognition/train/indoor_text/commercial/gt.csv",
+      "line": 255,
+      "reason": "missing label"
+    },
+    {
+      "file": "/home/dluser/PTDR/dataset/recognition/train/indoor_text/commercial/gt.csv",
+      "line": 256,
+      "reason": "missing label"
+    },
+    {
+      "file": "/home/dluser/PTDR/dataset/recognition/train/indoor_text/commercial/gt.csv",
+      "line": 292,
+      "reason": "missing label"
+    },
+    {
+      "file": "/home/dluser/PTDR/dataset/recognition/train/indoor_text/commercial/gt.csv",
+      "line": 293,
+      "reason": "missing label"
+    },
+    {
+      "file": "/home/dluser/PTDR/dataset/recognition/train/indoor_text/commercial/gt.csv",
+      "line": 294,
+      "reason": "missing label"
+    },
+    {
+      "file": "/home/dluser/PTDR/dataset/recognition/train/indoor_text/commercial/gt.csv",
+      "line": 654,
+      "reason": "missing label"
+    },
+    {
+      "file": "/home/dluser/PTDR/dataset/recognition/train/indoor_text/commercial/gt.csv",
+      "line": 792,
+      "reason": "missing label"
+    },
+    {
+      "file": "/home/dluser/PTDR/dataset/recognition/train/indoor_text/commercial/gt.csv",
+      "line": 1337,
+      "reason": "missing label"
+    },
+    {
+      "file": "/home/dluser/PTDR/dataset/recognition/train/indoor_text/commercial/gt.csv",
+      "line": 1357,
+      "reason": "missing label"
+    },
+    {
+      "file": "/home/dluser/PTDR/dataset/recognition/train/indoor_text/commercial/gt.csv",
+      "line": 1387,
+      "reason": "missing label"
+    },
+    {
+      "file": "/home/dluser/PTDR/dataset/recognition/train/indoor_text/commercial/gt.csv",
+      "line": 1420,
+      "reason": "missing label"
+    },
+    {
+      "file": "/home/dluser/PTDR/dataset/recognition/train/indoor_text/commercial/gt.csv",
+      "line": 1898,
+      "reason": "missing label"
+    },
+    {
+      "file": "/home/dluser/PTDR/dataset/recognition/train/outdoor_text/retail_exteriors/gt.csv",
+      "line": 1821,
+      "reason": "missing label"
+    },
+    {
+      "file": "/home/dluser/PTDR/dataset/recognition/train/outdoor_text/retail_exteriors/gt.csv",
+      "line": 1947,
+      "reason": "missing label"
+    },
+    {
+      "file": "/home/dluser/PTDR/dataset/recognition/train/outdoor_text/retail_exteriors/gt.csv",
+      "line": 2559,
+      "reason": "missing label"
+    },
+    {
+      "file": "/home/dluser/PTDR/dataset/recognition/train/outdoor_text/retail_exteriors/gt.csv",
+      "line": 2945,
+      "reason": "missing label"
+    },
+    {
+      "file": "/home/dluser/PTDR/dataset/recognition/train/outdoor_text/retail_exteriors/gt.csv",
+      "line": 3928,
+      "reason": "missing label"
+    },
+    {
+      "file": "/home/dluser/PTDR/dataset/recognition/train/outdoor_text/retail_exteriors/gt.csv",
+      "line": 3929,
+      "reason": "missing label"
+    },
+    {
+      "file": "/home/dluser/PTDR/dataset/recognition/train/outdoor_text/retail_exteriors/gt.csv",
+      "line": 3930,
+      "reason": "missing label"
+    },
+    {
+      "file": "/home/dluser/PTDR/dataset/recognition/train/outdoor_text/retail_exteriors/gt.csv",
+      "line": 3931,
+      "reason": "missing label"
+    },
+    {
+      "file": "/home/dluser/PTDR/dataset/recognition/train/outdoor_text/retail_exteriors/gt.csv",
+      "line": 3940,
+      "reason": "missing label"
+    },
+    {
+      "file": "/home/dluser/PTDR/dataset/recognition/train/outdoor_text/retail_exteriors/gt.csv",
+      "line": 4041,
+      "reason": "missing label"
+    },
+    {
+      "file": "/home/dluser/PTDR/dataset/recognition/train/outdoor_text/retail_exteriors/gt.csv",
+      "line": 4084,
+      "reason": "missing label"
+    },
+    {
+      "file": "/home/dluser/PTDR/dataset/recognition/train/outdoor_text/retail_exteriors/gt.csv",
+      "line": 4480,
+      "reason": "missing label"
+    },
+    {
+      "file": "/home/dluser/PTDR/dataset/recognition/train/outdoor_text/retail_exteriors/gt.csv",
+      "line": 4481,
+      "reason": "missing label"
+    },
+    {
+      "file": "/home/dluser/PTDR/dataset/recognition/train/outdoor_text/retail_exteriors/gt.csv",
+      "line": 4488,
+      "reason": "missing label"
+    },
+    {
+      "file": "/home/dluser/PTDR/dataset/recognition/train/outdoor_text/retail_exteriors/gt.csv",
+      "line": 4489,
+      "reason": "missing label"
+    },
+    {
+      "file": "/home/dluser/PTDR/dataset/recognition/train/outdoor_text/retail_exteriors/gt.csv",
+      "line": 4490,
+      "reason": "missing label"
+    },
+    {
+      "file": "/home/dluser/PTDR/dataset/recognition/train/outdoor_text/retail_exteriors/gt.csv",
+      "line": 5070,
+      "reason": "missing label"
+    },
+    {
+      "file": "/home/dluser/PTDR/dataset/recognition/train/outdoor_text/retail_exteriors/gt.csv",
+      "line": 5555,
+      "reason": "missing label"
+    },
+    {
+      "file": "/home/dluser/PTDR/dataset/recognition/train/outdoor_text/retail_exteriors/gt.csv",
+      "line": 5556,
+      "reason": "missing label"
+    },
+    {
+      "file": "/home/dluser/PTDR/dataset/recognition/train/outdoor_text/retail_exteriors/gt.csv",
+      "line": 5557,
+      "reason": "missing label"
+    },
+    {
+      "file": "/home/dluser/PTDR/dataset/recognition/train/outdoor_text/retail_exteriors/gt.csv",
+      "line": 5567,
+      "reason": "missing label"
+    },
+    {
+      "file": "/home/dluser/PTDR/dataset/recognition/train/outdoor_text/retail_exteriors/gt.csv",
+      "line": 5568,
+      "reason": "missing label"
+    },
+    {
+      "file": "/home/dluser/PTDR/dataset/recognition/train/outdoor_text/retail_exteriors/gt.csv",
+      "line": 5865,
+      "reason": "missing label"
+    },
+    {
+      "file": "/home/dluser/PTDR/dataset/recognition/train/outdoor_text/retail_exteriors/gt.csv",
+      "line": 5866,
+      "reason": "missing label"
+    },
+    {
+      "file": "/home/dluser/PTDR/dataset/recognition/train/outdoor_text/retail_exteriors/gt.csv",
+      "line": 6743,
+      "reason": "missing label"
+    },
+    {
+      "file": "/home/dluser/PTDR/dataset/recognition/train/outdoor_text/retail_exteriors/gt.csv",
+      "line": 6756,
+      "reason": "missing label"
+    },
+    {
+      "file": "/home/dluser/PTDR/dataset/recognition/train/outdoor_text/retail_exteriors/gt.csv",
+      "line": 7332,
+      "reason": "missing label"
+    },
+    {
+      "file": "/home/dluser/PTDR/dataset/recognition/train/outdoor_text/retail_exteriors/gt.csv",
+      "line": 7333,
+      "reason": "missing label"
+    },
+    {
+      "file": "/home/dluser/PTDR/dataset/recognition/train/outdoor_text/retail_exteriors/gt.csv",
+      "line": 7427,
+      "reason": "missing label"
+    },
+    {
+      "file": "/home/dluser/PTDR/dataset/recognition/train/outdoor_text/roadway_signage/gt.csv",
+      "line": 124,
+      "reason": "missing label"
+    },
+    {
+      "file": "/home/dluser/PTDR/dataset/recognition/train/outdoor_text/roadway_signage/gt.csv",
+      "line": 1553,
+      "reason": "missing label"
+    },
+    {
+      "file": "/home/dluser/PTDR/dataset/recognition/train/outdoor_text/roadway_signage/gt.csv",
+      "line": 1554,
+      "reason": "missing label"
+    },
+    {
+      "file": "/home/dluser/PTDR/dataset/recognition/train/outdoor_text/urban_signage/gt.csv",
+      "line": 64,
+      "reason": "missing label"
+    },
+    {
+      "file": "/home/dluser/PTDR/dataset/recognition/test/indoor_text/commercial/gt.txt",
+      "line": 88,
+      "reason": "missing label"
+    },
+    {
+      "file": "/home/dluser/PTDR/dataset/recognition/test/indoor_text/commercial/gt.txt",
+      "line": 89,
+      "reason": "missing label"
+    },
+    {
+      "file": "/home/dluser/PTDR/dataset/recognition/test/indoor_text/commercial/gt.txt",
+      "line": 113,
+      "reason": "missing label"
+    },
+    {
+      "file": "/home/dluser/PTDR/dataset/recognition/test/outdoor_text/retail_exteriors/gt.txt",
+      "line": 378,
+      "reason": "missing label"
+    },
+    {
+      "file": "/home/dluser/PTDR/dataset/recognition/test/outdoor_text/retail_exteriors/gt.txt",
+      "line": 379,
+      "reason": "missing label"
+    },
+    {
+      "file": "/home/dluser/PTDR/dataset/recognition/test/outdoor_text/retail_exteriors/gt.txt",
+      "line": 380,
+      "reason": "missing label"
+    },
+    {
+      "file": "/home/dluser/PTDR/dataset/recognition/test/outdoor_text/retail_exteriors/gt.txt",
+      "line": 381,
+      "reason": "missing label"
+    },
+    {
+      "file": "/home/dluser/PTDR/dataset/recognition/test/outdoor_text/retail_exteriors/gt.txt",
+      "line": 382,
+      "reason": "missing label"
+    },
+    {
+      "file": "/home/dluser/PTDR/dataset/recognition/test/outdoor_text/retail_exteriors/gt.txt",
+      "line": 383,
+      "reason": "missing label"
+    },
+    {
+      "file": "/home/dluser/PTDR/dataset/recognition/test/outdoor_text/retail_exteriors/gt.txt",
+      "line": 384,
+      "reason": "missing label"
+    },
+    {
+      "file": "/home/dluser/PTDR/dataset/recognition/test/outdoor_text/retail_exteriors/gt.txt",
+      "line": 385,
+      "reason": "missing label"
+    },
+    {
+      "file": "/home/dluser/PTDR/dataset/recognition/test/outdoor_text/retail_exteriors/gt.txt",
+      "line": 506,
+      "reason": "missing label"
+    },
+    {
+      "file": "/home/dluser/PTDR/dataset/recognition/test/outdoor_text/retail_exteriors/gt.txt",
+      "line": 507,
+      "reason": "missing label"
+    },
+    {
+      "file": "/home/dluser/PTDR/dataset/recognition/test/outdoor_text/retail_exteriors/gt.txt",
+      "line": 707,
+      "reason": "missing label"
+    },
+    {
+      "file": "/home/dluser/PTDR/dataset/recognition/test/outdoor_text/retail_exteriors/gt.txt",
+      "line": 715,
+      "reason": "missing label"
+    },
+    {
+      "file": "/home/dluser/PTDR/dataset/recognition/test/outdoor_text/retail_exteriors/gt.txt",
+      "line": 788,
+      "reason": "missing label"
+    },
+    {
+      "file": "/home/dluser/PTDR/dataset/recognition/test/outdoor_text/retail_exteriors/gt.txt",
+      "line": 1228,
+      "reason": "missing label"
+    },
+    {
+      "file": "/home/dluser/PTDR/dataset/recognition/test/outdoor_text/retail_exteriors/gt.txt",
+      "line": 1257,
+      "reason": "missing label"
+    },
+    {
+      "file": "/home/dluser/PTDR/dataset/recognition/test/outdoor_text/retail_exteriors/gt.txt",
+      "line": 1258,
+      "reason": "missing label"
+    },
+    {
+      "file": "/home/dluser/PTDR/dataset/recognition/test/outdoor_text/retail_exteriors/gt.txt",
+      "line": 1585,
+      "reason": "missing label"
+    }
+  ]
+}

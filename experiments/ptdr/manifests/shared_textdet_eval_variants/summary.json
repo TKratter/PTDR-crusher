@@ -1,0 +1,46 @@
+{
+  "seed": 42,
+  "rotation_angles": [
+    90,
+    180,
+    270
+  ],
+  "preset_names": [
+    "mild_tilt",
+    "upside_down",
+    "oblique_capture",
+    "low_light_blur",
+    "harsh_glare"
+  ],
+  "variants": {
+    "val_rot90": {
+      "images": 151
+    },
+    "val_rot180": {
+      "images": 151
+    },
+    "val_rot270": {
+      "images": 151
+    },
+    "val_hard": {
+      "images": 151,
+      "preset_counts": {
+        "harsh_glare": 27,
+        "low_light_blur": 24,
+        "mild_tilt": 33,
+        "oblique_capture": 35,
+        "upside_down": 32
+      }
+    },
+    "test_hard": {
+      "images": 499,
+      "preset_counts": {
+        "harsh_glare": 96,
+        "low_light_blur": 103,
+        "mild_tilt": 111,
+        "oblique_capture": 87,
+        "upside_down": 102
+      }
+    }
+  }
+}
